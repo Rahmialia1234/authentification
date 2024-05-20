@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Attendance Dashboard </title>
+</head>
+<body>
+        <form  method="post" action="/insertuser/">
+            {% csrf_token %}
+            <input type="text" name="tuid"  placeholder="Professor ID">
+            <input type="text" name="tuname"  placeholder="Nom">
+            <input type="text" name="tuprenom"  placeholder="Prenom">
+            <input type="text" name="tdepartement"  placeholder="Departement">
+            <input type="text" name="tuemail"  placeholder="Adresse email">
+            <input type="text" name="ttelephone"  placeholder="Telephone">
+            {{ form.as_p }}
+  <!-- Bouton d'ajout -->
+  <button type="submit"> Ajouter</button>
+  
+</form>
+
+</body>
+</html>
