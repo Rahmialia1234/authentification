@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Attendance Dashboard </title>
+  <!-- Font Awesome Cdn Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body{
+  background: rgba(142, 216, 216, 0.508);
+}
+nav{
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  width: 90px;
+  /* width: 280px; */
+  background: #fff;
+  overflow: hidden;
+  transition: 1s;
+}
+nav:hover{
+  width: 280px;
+  transition: 1s;
+}
+.logo{
+  text-align: center;
+  display: flex;
+  margin: 10px 0 0 10px;
+  padding-bottom: 3rem;
+}
+
+.logo img{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+.logo span{
+  font-weight: bold;
+  padding-left: 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+a{
+  position: relative;
+  width: 280px;
+  font-size: 14px;
+  color: rgb(85, 83, 83);
+  display: table;
+  padding: 10px;
+}
+nav .fas{
+  position: relative;
+  width: 70px;
+  height: 40px;
+  top: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+nav .bx{
+  position: relative;
+  width: 70px;
+  height: 40px;
+  top: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+.nav-item{
+  position: relative;
+  top: 12px;
+  margin-left: 10px;
+}
+a:hover{
+  background: #eee;
+}
+a:hover i{
+  color: #34AF6D;
+  transition: 0.5s;
+}
+.logout{
+  position: absolute;
+  bottom: 0;
+}
+
+.container{
+  display: flex;
+}
+
+/* MAin Section */
+.main{
+  position: relative;
+  padding: 20px;
+  width: 100%;
+}
+.main-top{
+  display: flex;
+  width: 100%;
+}
+.main-top i{
+  position: absolute;
+  right: 0;
+  margin: 10px 30px;
+  color: rgb(11, 183, 183);
+  cursor: pointer;
+}
+.main .users{
+  display: flex;
+  width: 100%;
+}
+.users .card{
+  width: 25%;
+  margin: 10px;
+  background: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+.users .card img{
+  background-color: #09a873;
+  width: 40px;
+  height: 40px;
+  border-radius: 90%;
+}
+.users .card h4{
+  text-transform: uppercase;
+ 
+}
+.users .card p{
+  font-size: 12px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+.users table{
+  margin:  auto;
+}
+.users .per span{
+  padding: 5px;
+  border-radius: 10px;
+  background: rgb(223, 223, 223);
+}
+.users td{
+  font-size: 14px;
+  padding-right: 15px;
+}
+.users .card button{
+  width: 100%;
+  margin-top: 8px;
+  padding: 7px;
+  cursor: pointer;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid #4AD489;
+}
+.users .card button:hover{
+  background: #d4cb4a;
+  color: #fff;
+  transition: 0.5s;
+}
+
+/*Attendance List serction  */
+.attendance{
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+.attendance-list{
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+.table{
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 15px;
+  min-width: 100%;
+  overflow: hidden;
+  border-radius: 5px 5px 0 0;
+}
+table thead tr{
+  color: #fff;
+  background: #4AD489;
+  text-align: center;
+  font-weight: bold;
+}
+.table th,
+.table td{
+  padding: 12px 15px;
+}
+.table tbody tr{
+  border-bottom: 1px solid #ddd;
+}
+.table tbody tr:nth-of-type(odd){
+  background: #f3f3f3;
+}
+
+.table tbody tr.active{
+  font-weight: bold;
+  color: #4AD489;
+}
+.table tbody tr:last-of-type{
+  border-bottom: 2px solid #4AD489;
+}
+.table button{
+  padding: 6px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #4AD489;
+}
+.table button:hover{
+  background: #4AD489;
+  color: #fff;
+  transition: 0.5rem;
+}
+
+
+
+.main-top {
+  position: relative; /* Ensure the parent element is positioned */
+}
+
+.t {
+  position: absolute;
+  top: 0;
+  right: 0; /* Align the element to the top right corner */
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  width: 20%;
+  transition: color 0.3s; /* Add transition effect for smooth color change */
+}
+
+.t:hover {
+  color: rgb(88, 82, 82); /* Change color on hover */
+}
+
+.table td {
+        padding: 12px 15px;
+        font-size: 14px;
+        text-align:center;
+      font-weight: bold;
+    }
+
+    /* Style spécifique pour les cellules de la nouvelle ligne */
+    .new-row td {
+        padding: 12px 15px;
+        font-size: 14px;
+        text-align:center;
+      font-weight: bold;
+    }
+    input{
+      text-align:center;
+     
+    }
+
+
+  /* Styles de base pour le bouton */
+.modern-button {
+    padding: 10px 20px;
+    background: linear-gradient(to bottom, #4AD489, #45a049); /* dégradé de couleurs */
+    color: white;
+    border: none;
+    border-radius: 25px; /* coins arrondis */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s; /* effet de transition pour le survol */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ombre douce */
+}
+
+/* Effet de survol */
+.modern-button:hover {
+    background: linear-gradient(to bottom, #4AD489, #4CAF50); /* dégradé de couleurs modifié lors du survol */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* ombre légèrement plus prononcée au survol */
+}
+  </style>
+</head>
+<body>
+    
+  <div class="container">
+    <nav>
+        <ul>
+            <li><a href="dashboard.html">
+                <i class='bx bxs-dashboard bx-burst' ></i>
+                <span class="nav-item">Dashboard </span>
+            </a></li>
+            
+            <li><a href="#">
+              <i class='bx bxs-user-detail bx-flashing' ></i>
+                <span class="nav-item">Users</span>
+            </a></li>
+        </ul>
+    </nav>
+
+    <section class="main">
+      <!-- Dashboard header -->
+      <div class="main-top">
+        <h1>Attendance For professors</h1>
+        <h4 class="t">Made In Iset Bizerte</h4>
+        <i class="fas fa-user-cog"></i>
+      </div>
+  
+      <div class="attendance">
+        <div>
+          <h1>Attendance List</h1>
+        <form  method="post" action="/insertuser/">
+            {% csrf_token %}
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Departement</th>
+                <th>Adresse email</th>
+                <th>telephone</th>
+              </tr>
+            </thead>
+            <tbody>              
+
+              <tr>
+               <th>095</th> 
+               <th>Jassem</th> 
+               <th>Electrique</th> 
+               <th>17/09/20</th> 
+               <th>15:14</th> 
+               <th>....</th>
+              </tr>
+              {% for us in userdata %}
+              <tr>
+                <td>{{ us.uid }}</td>
+                <td>{{ us.uname }}</td>
+                <td>{{ us.uprenom }}</td>
+                <td>{{ us.departement }}</td>
+                <td>{{ us.uemail }}</td>
+                <td>{{ us.telephone }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+            <input type="text" name="tuid"  placeholder="Professor ID">
+            <input type="text" name="tuname"  placeholder="Nom">
+            <input type="text" name="tuprenom"  placeholder="Prenom">
+            <input type="text" name="tdepartement"  placeholder="Departement">
+            <input type="text" name="tuemail"  placeholder="Adresse email">
+            <input type="text" name="ttelephone"  placeholder="Telephone">
+            
+            {{ form.as_p }}
+  <!-- Bouton d'ajout -->
+  <button type="submit" name="reg" id="addRowButton" class="modern-button">Ajouter</button>
+</form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
